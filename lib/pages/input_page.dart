@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/widgets/input_form.dart';
 import 'package:flutter_application_3/shared/rutas_constantes.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class InputPage extends StatelessWidget {
   InputPage({super.key});

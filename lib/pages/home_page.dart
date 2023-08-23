@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,16 +13,16 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.blue,
         title: const Text('Movies'),
       ),
-      body: const SizedBox(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text('Blue Beetle', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),
+            const Text('Blue Beetle', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
                 width: double.infinity,
                 height: 390,
                 child: Card(
@@ -31,7 +32,38 @@ class HomePage extends StatelessWidget {
                   ),
                   fit: BoxFit.cover,
                   ),
-                )
+                ),
+              ),
+              Expanded(child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RatingBar.builder(
+                    itemCount: 5,
+                    initialRating: 3.5,
+                    allowHalfRating: true,
+                    itemSize: 20,
+                    itemBuilder: (context,_){
+                      return const Icon(Icons.star, color: Colors.amber,);
+                    },
+                    onRatingUpdate: (raiting){
+                      print(raiting);
+                    },
+                  ), 
+                ],
+              )
+            ),
+              const SizedBox(
+                width: double.infinity,
+                child: Text('Descripcion', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold)
+                ),
+              ),
+              const SizedBox(
+                width: double.infinity,
+                height: 200,
+                child: Card(
+                  child: Text('Reparto', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold)
+              ),
+                ),
               ),
           ],
         ),
