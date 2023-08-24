@@ -28,13 +28,25 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
+                  RatingBar.builder(
+                      itemCount: 5,
+                      initialRating: 3.5,
+                      allowHalfRating: true,
+                      itemSize: 20,
+                      itemBuilder: (context, _) {
+                        return const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        );
+                      },
+                      onRatingUpdate: (rating) {}),
+                  const Expanded(
                       child: Text(
                     "   Votos: 3.05",
                     style: TextStyle(
@@ -42,14 +54,14 @@ class HomePage extends StatelessWidget {
                   )),
                 ],
               ),
-              Column(
+              const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.calendar_month_outlined),
                   Text('2023-08-18')
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],
