@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+//import 'package:flutter_application_3/utils/response_pelicula.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,72 +10,137 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.movie_filter_outlined),
+        leading: const Icon(Icons.arrow_back),
         backgroundColor: Colors.blue,
-        title: const Text('Movies'),
+        title: const Text('Nombre de la Peli'),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Text('Blue Beetle', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-                width: double.infinity,
-                height: 390,
-                child: Card(
-                  child: Image(
-                    image: CachedNetworkImageProvider(
-                    'https://static.wikia.nocookie.net/marvel_dc/images/7/70/Jaime_Reyes_DC_Universe_004.jpg/revision/latest?cb=20230818001827'
-                  ),
-                  fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Expanded(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+              width: double.infinity,
+              child: CachedNetworkImage(
+                  imageUrl:
+                      'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/04/blue-beetle-dc-comics-3001432.jpg')),
+          const SizedBox(
+            height: 10,
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RatingBar.builder(
-                    itemCount: 5,
-                    initialRating: 3.5,
-                    allowHalfRating: true,
-                    itemSize: 20,
-                    itemBuilder: (context,_){
-                      return const Icon(Icons.star, color: Colors.amber,);
-                    },
-                    onRatingUpdate: (raiting){
-                      print(raiting);
-                    },
-                  ), 
+                  Expanded(
+                      child: Text(
+                    "   Votos: 3.05",
+                    style: TextStyle(
+                        color: Colors.amber, fontWeight: FontWeight.bold),
+                  )),
                 ],
-              )
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.calendar_month_outlined),
+                  Text('2023-08-18')
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 9, left: 11),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Descripcion',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                  "Un adolescente mexicano se encuentra un..."),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 9, left: 11),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Reparto',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text("Actor1, Actor2, Actor3, Actor4"),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                  ],
+                ),
+              ),
             ),
-              const SizedBox(
-                width: double.infinity,
-                child: Text('Descripcion', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold)
-                ),
-              ),
-              const SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: Card(
-                  child: Text('Reparto', style: TextStyle(color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold)
-              ),
-                ),
-              ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
